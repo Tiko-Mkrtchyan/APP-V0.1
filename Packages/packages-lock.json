@@ -56,11 +56,11 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.xr.arfoundation": "5.1.1",
-        "com.unity.xr.arkit": "5.1.1",
-        "com.unity.xr.arcore": "5.1.1",
+        "com.unity.xr.arfoundation": "5.1.0",
+        "com.unity.xr.arkit": "5.1.0",
+        "com.unity.xr.arcore": "5.1.0",
         "com.unity.xr.magicleap": "7.0.0",
-        "com.unity.xr.openxr": "1.9.1"
+        "com.unity.xr.openxr": "1.8.2"
       }
     },
     "com.unity.feature.development": {
@@ -68,8 +68,8 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.ide.visualstudio": "2.0.22",
-        "com.unity.ide.rider": "3.0.27",
+        "com.unity.ide.visualstudio": "2.0.21",
+        "com.unity.ide.rider": "3.0.25",
         "com.unity.ide.vscode": "1.2.5",
         "com.unity.editorcoroutines": "1.0.0",
         "com.unity.performance.profile-analyzer": "1.2.2",
@@ -78,7 +78,7 @@
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.27",
+      "version": "3.0.25",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -87,7 +87,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
-      "version": "2.0.22",
+      "version": "2.0.21",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -210,9 +210,17 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr-content.xr-sim-environments": {
+      "version": "file:../ContentPackages/com.unity.xr-content.xr-sim-environments-1.0.0.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {
+        "com.unity.xr.arfoundation": "5.0.0"
+      }
+    },
     "com.unity.xr.arcore": {
       "version": "5.1.1",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.arfoundation": "5.1.1",
@@ -310,13 +318,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.openxr": {
-      "version": "1.9.1",
+      "version": "1.8.2",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.xr.management": "4.4.0",
+        "com.unity.xr.management": "4.0.1",
         "com.unity.xr.legacyinputhelpers": "2.1.2",
-        "com.unity.inputsystem": "1.6.3",
+        "com.unity.inputsystem": "1.4.4",
         "com.unity.xr.core-utils": "2.1.1"
       },
       "url": "https://packages.unity.com"
