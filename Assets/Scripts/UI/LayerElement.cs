@@ -1,6 +1,5 @@
-using AR_Features;
 using ConjureKit;
-using Datas;
+using Model;
 using Gameobjects;
 using TMPro;
 using UnityEngine;
@@ -15,13 +14,12 @@ namespace UI
     [SerializeField] private Button deleteButton;
     [SerializeField] private TMP_InputField userInputField;
     public TextMeshProUGUI layerName;
-    public LayersData _layersData;
+   public LayersData layersData;
     public bool thisLayerIsActive;
     [SerializeField] private Button layerSelectorButton;
 
     private PanelController _panelController;
     private ConjureKitManager _conjureKitManager;
-    private ArManager _arManager;
 
     private void Start()
     {
@@ -40,7 +38,6 @@ namespace UI
     {
         _panelController = transform.parent.GetComponent<PanelController>();
         _conjureKitManager = GameObject.Find("ConjureKitManager").GetComponent<ConjureKitManager>();
-        _arManager = GameObject.Find("XR Origin").GetComponent<ArManager>();
     }
 
     private void RegisterButtonListeners()
@@ -73,10 +70,10 @@ namespace UI
 
     private void DeleteLayer()
     {
-        StartCoroutine(PocketBaseOperations.DeleteVirtualAssetsByLayer(_layersData.id, layerButton.gameObject));
+        StartCoroutine(PocketBaseOperations.DeleteVirtualAssetsByLayer(layersData.id, layerButton.gameObject));
         _panelController.activeLayerId = null;
         _panelController.chosenLayer = null;
-        StartCoroutine(PocketBaseOperations.DeleteLayer(_layersData));
+        StartCoroutine(PocketBaseOperations.DeleteLayer(layersData));
         DestroyAllObjects();
     }
 
@@ -84,15 +81,15 @@ namespace UI
     {
         if (data == null) return;
 
-        _layersData = data;
+        layersData = data;
         layerName.text = data.name;
     }
 
     private void ConfirmRenaming(string newName)
     {
         layerName.text = newName;
-        _layersData.name = newName;
-        PocketBaseOperations.UpdateLayerName(_layersData);
+        layersData.name = newName;
+        PocketBaseOperations.UpdateLayerName(layersData);
     }
 
     private void SelectLayer()

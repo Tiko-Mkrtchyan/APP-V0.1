@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ef0c255eee4d0db52f163b96bb58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arRaycastManager: {fileID: 0}
+  arManager: {fileID: 0}
   arCamera: {fileID: 1094929419}
   conjureKitManager: {fileID: 757491288}
   panelController: {fileID: 362894177}
@@ -1238,7 +1238,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094929413}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1094929419
 Camera:
   m_ObjectHideFlags: 0
@@ -2613,13 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874b5812208e040a99f2c85928d0f9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allFurnitures:
-  - {fileID: 67406183}
-  - {fileID: 1271130640}
-  - {fileID: 741140217}
-  - {fileID: 2086234750}
-  - {fileID: 1546541678}
-  - {fileID: 1327362959}
+  allPrefabs: []
   furniturePrefabs:
   - {fileID: 8748937127385642754, guid: c31132f6575034110ac25d38a64be923, type: 3}
   - {fileID: 3450624472709962292, guid: 21575c0a7b7bb444ea31757e1d07ea80, type: 3}
