@@ -1,6 +1,5 @@
 using Auki.ConjureKit;
 using Auki.ConjureKit.Manna;
-using Auki.Integration.ARFoundation.Manna;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -40,13 +39,6 @@ namespace ConjureKit
         {
             _conjureKit = new Auki.ConjureKit.ConjureKit(arCamera, Key, Secret);
             _manna = new Manna(_conjureKit);
-
-#if UNITY_EDITOR
-            arCamera.gameObject.AddComponent<FrameFeederEditor>().AttachMannaInstance(_manna);
-#else
-        _manna.GetOrCreateFrameFeederComponent().AttachMannaInstance(_manna);
-#endif
-
             _manna.OnLighthouseTracked += OnQRCodeDetected;
             _manna.GetOrCreateFrameFeederComponent().AttachMannaInstance(_manna);
 

@@ -26,44 +26,22 @@ namespace AR_Features
 
         private void Update()
         {
-#if UNITY_EDITOR
-            HandleEditorInput();
-#endif
             HandleTouchInput();
         }
 
-#if UNITY_EDITOR
-        private void HandleEditorInput()
-        {
-            if (conjureKitManager.LayersActive && !string.IsNullOrEmpty(panelController.activeLayerId))
-            {
-                if (Input.GetMouseButtonDown(0) && !string.IsNullOrEmpty(panelController.activeLayerId) &&
-                    panelController.chosenLayer != null)
-                {
-                    Ray ray = arCamera.ScreenPointToRay(Input.mousePosition);
-                    if (arManager.Raycast(ray, _hits, TrackableType.PlaneWithinPolygon))
-                    {
-                        Pose hitPose = _hits[0].pose;
-                        GameObject createdCube =
-                            furniturePlacer.PlaceSelectedFurniture(hitPose.position, hitPose.rotation);
-                        Pose objPose = new Pose(createdCube.transform.position, createdCube.transform.rotation);
-                        PocketBaseOperations.UploadToVirtualAssetsDB(conjureKitManager.currentDomainId, objPose,
-                            panelController.activeLayerId, createdCube.transform.name);
-                    }
-                }
-            }
-        }
-#endif
-
         private void HandleTouchInput()
         {
-            if (conjureKitManager.LayersActive && Input.touchCount > 0)
+            if (conjureKitManager.LayersActive && Input.touchCount > 0 && !string.IsNullOrEmpty(panelController.activeLayerId))
             {
                 Touch touch = Input.GetTouch(0);
-                if (arManager.Raycast(touch.position, _hits, TrackableType.PlaneWithinPolygon))
+                if (arManager.Raycast(touch.position, _hits, TrackableType.PlaneWithinPolygon) && touch.phase==TouchPhase.Began&&!string.IsNullOrEmpty(panelController.activeLayerId))
                 {
                     Pose hitPose = _hits[0].pose;
-                    furniturePlacer.PlaceSelectedFurniture(hitPose.position, hitPose.rotation);
+                    GameObject createdCube =
+                        furniturePlacer.PlaceSelectedFurniture(hitPose.position, hitPose.rotation);
+                    Pose objPose = new Pose(createdCube.transform.position, createdCube.transform.rotation);
+                    PocketBaseOperations.UploadToVirtualAssetsDB(conjureKitManager.currentDomainId, objPose,
+                        panelController.activeLayerId, createdCube.transform.name);
                 }
             }
         }
