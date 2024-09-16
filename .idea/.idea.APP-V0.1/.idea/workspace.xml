@@ -5,34 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3013432-b349-4388-a1da-d4621b0d3d00" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FurniturePlacer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/FurniturePlacer.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.APP-V0.1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.APP-V0.1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ExampleAssets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExampleAssets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Layer 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Layer 1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ArManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConjureKitManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConjureKitManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CubeScript.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputFieldController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/InputFieldController.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LayersController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LayersController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Furniture/Chair1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Furniture/Chair1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Furniture/Chair2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Furniture/Chair2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa19.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa19.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Furniture/Sofa3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AR Features/ArManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AR Features/ArManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ConjureKit/ConjureKitManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ConjureKit/ConjureKitManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Model/MyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Model/MyData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LayerElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LayerElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UnityXRContent/ARFoundation/SimulationEnvironments/Common/Materials/SimEnvironment_Object.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UnityXRContent/ARFoundation/SimulationEnvironments/Common/Materials/SimEnvironment_Object.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UnityXRContent/ARFoundation/SimulationEnvironments/Common/Materials/SimEnvironment_Object_Accent.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UnityXRContent/ARFoundation/SimulationEnvironments/Common/Materials/SimEnvironment_Object_Accent.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/AR Kit Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/AR Kit Settings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/Open XR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/Open XR Package Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Editor Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Editor Settings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/XRGeneralSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/link.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/link.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,11 +41,15 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Editor/RectMask2D/RectTransformPosition.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/85725be8b112410e82e989980f11bf24175800/4a/810301ba/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/85d03bc5c5254fa687705ac1df81ae043600/9a/2b55831f/JsonUtility.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b2cf0a0c26204effa9bf3af4dd38b49d94600/6f/ff3c19a9/Manna.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fc1a0556e49244d7a68d63b625fb5ec2173e00/89/ee26e6ac/AsyncOperation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fc1a0556e49244d7a68d63b625fb5ec2173e00/a6/849f07af/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -69,13 +63,13 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;LayersFinished-(Default-UI)&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Version-0.1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;SpellingScopeSettingsId&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -189,6 +183,11 @@
       <workItem from="1716224111644" duration="15917000" />
       <workItem from="1716368741484" duration="4350000" />
       <workItem from="1716404328061" duration="104000" />
+      <workItem from="1716487313650" duration="1427000" />
+      <workItem from="1717153465870" duration="1669000" />
+      <workItem from="1717660801417" duration="715000" />
+      <workItem from="1717661565535" duration="3595000" />
+      <workItem from="1717676559005" duration="277000" />
     </task>
     <servers />
   </component>

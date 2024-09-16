@@ -1,5 +1,5 @@
 using ConjureKit;
-using Datas;
+using Model;
 using TMPro;
 using UnityEngine;
 using Button = UnityEngine.UI.Button;
@@ -13,7 +13,6 @@ namespace UI
         public Transform panel;
 
         private ConjureKitManager _conjureKitManager;
-        private LayersData _layersData;
 
         private void Start()
         {
@@ -28,11 +27,6 @@ namespace UI
             {
                 CreateButton(data);
             }
-        }
-
-        private void Initialize(LayersData layersData)
-        {
-            _layersData = layersData;
         }
 
         private void CreateNewButton()

@@ -10,18 +10,18 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 
-namespace Datas
+namespace Model
     {
         public  class PocketBaseOperations: MonoBehaviour
         {
-            private static string baseUrl="https://ae9b-87-241-159-60.ngrok-free.app";
-            private static string _layersPath = $"{baseUrl}/api/collections/layers/records";
-            private static string _virtualAssetsPath = $"{baseUrl}/api/collections/virtual_assets/records";
-            private static string _domainId = "WPHVS4OIGE2";
-            
-           public static void UpdateLayerName(LayersData layersData)
+            private const string Host = "https://c683-87-241-156-103.ngrok-free.app";
+            private static readonly string LayersPath = $"{Host}/api/collections/layers/records";
+            private static readonly string VirtualAssetsPath = $"{Host}/api/collections/virtual_assets/records";
+            private const string DomainId = "WPHVS4OIGE2";
+
+            public static void UpdateLayerName(LayersData layersData)
            {
-               string url = _layersPath;
+               string url = LayersPath;
                 UnityWebRequest request = new UnityWebRequest($"{url}/{layersData.id}");
                 request.method = "PATCH";
                 var json = JsonUtility.ToJson(layersData);
@@ -29,7 +29,7 @@ namespace Datas
                 request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 request.downloadHandler = new DownloadHandlerBuffer();
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SendWebRequest().completed += operation =>
+                request.SendWebRequest().completed += _ =>
                 {
                     if (request.result == UnityWebRequest.Result.ConnectionError ||
                         request.result == UnityWebRequest.Result.ProtocolError)
@@ -46,7 +46,7 @@ namespace Datas
            
            public static void UploadLayerToDB(string name,string domainId, Action<LayersData> onReceived)
            {
-               string url = _layersPath;
+               string url = LayersPath;
                UnityWebRequest request = new UnityWebRequest(url);
                request.method = "POST";
                var json = JsonUtility.ToJson(new LayersData
@@ -58,7 +58,7 @@ namespace Datas
                request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                request.downloadHandler = new DownloadHandlerBuffer();
                request.SetRequestHeader("Content-Type", "application/json");
-               request.SendWebRequest().completed += operation =>
+               request.SendWebRequest().completed += _ =>
                {
                    if (request.result == UnityWebRequest.Result.ConnectionError ||
                        request.result == UnityWebRequest.Result.ProtocolError)
@@ -76,7 +76,7 @@ namespace Datas
 
            public static void UploadToVirtualAssetsDB(string domainId, Pose pose,string layerId,string name)
            {
-                string url =_virtualAssetsPath;
+                string url =VirtualAssetsPath;
                 UnityWebRequest request = new UnityWebRequest(url);
                 request.method = "POST";
                 var json = JsonUtility.ToJson(new FurnitureData
@@ -91,7 +91,7 @@ namespace Datas
                 request.uploadHandler = new UploadHandlerRaw(bodyRaw);
                 request.downloadHandler = new DownloadHandlerBuffer();
                 request.SetRequestHeader("Content-Type", "application/json");
-                request.SendWebRequest().completed += operation =>
+                request.SendWebRequest().completed += _ =>
                 {
                     if (request.result == UnityWebRequest.Result.ConnectionError ||
                         request.result == UnityWebRequest.Result.ProtocolError)
@@ -110,7 +110,7 @@ namespace Datas
            {
                string filter = $"(layer='{layerId}')";
                filter = HttpUtility.UrlEncode(filter);
-               string url = $"{_virtualAssetsPath}?filter={filter}";
+               string url = $"{VirtualAssetsPath}?filter={filter}";
                UnityWebRequest request = UnityWebRequest.Get(url);
                yield return request.SendWebRequest();
 
@@ -142,7 +142,7 @@ namespace Datas
             {
                 string filter = $"(layer='{layerId}')";
                 filter = HttpUtility.UrlEncode(filter);
-                string url = $"{_virtualAssetsPath}?filter={filter}";
+                string url = $"{VirtualAssetsPath}?filter={filter}";
                 UnityWebRequest request = UnityWebRequest.Get(url);
                 yield return request.SendWebRequest();
            
@@ -157,7 +157,7 @@ namespace Datas
                     FurnitureDataList myDataList = JsonUtility.FromJson<FurnitureDataList>(request.downloadHandler.text);
                     foreach (FurnitureData item in myDataList.items)
                     {
-                        string urlPath = $"{_virtualAssetsPath}/{item.id}";
+                        string urlPath = $"{VirtualAssetsPath}/{item.id}";
                         UnityWebRequest req = UnityWebRequest.Delete(urlPath);
                         yield return req.SendWebRequest();
                         if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
@@ -172,10 +172,10 @@ namespace Datas
             public static IEnumerator DeleteLayer(LayersData layersData)
             {
                 yield return new WaitForSeconds(1.5f);
-                string url = _layersPath+$"/{layersData.id}";
+                string url = LayersPath+$"/{layersData.id}";
                 UnityWebRequest request = UnityWebRequest.Delete(url);
                 yield return request.SendWebRequest();
-                request.SendWebRequest().completed += operation =>
+                request.SendWebRequest().completed += _ =>
                 {
                     if (request.result == UnityWebRequest.Result.ConnectionError ||
                         request.result == UnityWebRequest.Result.ProtocolError)
@@ -194,9 +194,9 @@ namespace Datas
             
             public static IEnumerator GetLayersNames( Action<LayersDataList>  onComplete)
             {
-                string filter = $"(domainId='{_domainId}')";
+                string filter = $"(domainId='{DomainId}')";
                 filter = HttpUtility.UrlEncode(filter);
-                string url = $"{_layersPath}?filter={filter}";
+                string url = $"{LayersPath}?filter={filter}";
                 UnityWebRequest request = UnityWebRequest.Get(url);
                 yield return request.SendWebRequest();
 
@@ -215,7 +215,7 @@ namespace Datas
         }
     }
    
-    [System.Serializable]
+    [Serializable]
     public class FurnitureData
     {
         public string name;
@@ -224,13 +224,13 @@ namespace Datas
         public SerializablePose pose;
         public string layer;
     }
-    [System.Serializable]
+    [Serializable]
     public class FurnitureDataList
     {
         public List<FurnitureData> items;
     }
 
-    [System.Serializable]
+    [Serializable]
     public  class LayersData
     {
         public string id;
@@ -244,7 +244,7 @@ namespace Datas
     {
         public List<LayersData> items;
     }
-    [System.Serializable]
+    [Serializable]
     public class SerializablePose
     {
         public Vector3 position;
@@ -275,7 +275,7 @@ namespace Auki.Integration.ARFoundation.Manna
         /// <summary>
         /// AR Camera Manager necessary to supply Manna with camera feed frames.
         /// </summary>
-        [SerializeField] protected ARCameraBackground ArCameraBackground;
+        [SerializeField] protected ARCameraBackground arCameraBackground;
 
         private RenderTexture _videoTexture;
 
@@ -283,8 +283,8 @@ namespace Auki.Integration.ARFoundation.Manna
         {
             base.Awake();
 
-            if (ArCameraBackground == null)
-                ArCameraBackground = GetComponent<ARCameraBackground>();
+            if (arCameraBackground == null)
+                arCameraBackground = GetComponent<ARCameraBackground>();
         }
         
         /// <summary>
@@ -309,13 +309,13 @@ namespace Auki.Integration.ARFoundation.Manna
         {
             if (_videoTexture != null) return;
 
-            var textureNames = ArCameraBackground.material.GetTexturePropertyNames();
-            for (var i = 0; i < textureNames.Length; i++)
+            var textureNames = arCameraBackground.material.GetTexturePropertyNames();
+            foreach (var t in textureNames)
             {
-                var texture = ArCameraBackground.material.GetTexture(textureNames[i]);
+                var texture = arCameraBackground.material.GetTexture(t);
                 if (texture == null) continue;
                 Debug.Log(
-                    $"Creating video texture based on: {textureNames[i]}, format: {texture.graphicsFormat}, size: {texture.width}x{texture.height}");
+                    $"Creating video texture based on: {t}, format: {texture.graphicsFormat}, size: {texture.width}x{texture.height}");
                 _videoTexture = new RenderTexture(texture.width, texture.height, 0, GraphicsFormat.R8_UNorm);
                 break;
             }
@@ -324,7 +324,7 @@ namespace Auki.Integration.ARFoundation.Manna
         private void CopyVideoTexture()
         {
             // Copy the camera background to a RenderTexture
-            var textureY = ArCameraBackground.material.GetTexture(TextureSingle);
+            var textureY = arCameraBackground.material.GetTexture(TextureSingle);
             Graphics.Blit(textureY, _videoTexture);
         }
     }

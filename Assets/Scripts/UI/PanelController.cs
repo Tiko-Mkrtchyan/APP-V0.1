@@ -12,7 +12,7 @@ namespace UI
 
         public string activeLayerId;
 
-        public GameObject chosenLayer = null;
+        public GameObject chosenLayer;
 
         private void OnEnable()
         {
@@ -26,7 +26,7 @@ namespace UI
             {
                 if (layer.thisLayerIsActive)
                 {
-                    activeLayerId = layer._layersData.id;
+                    activeLayerId = layer.layersData.id;
                     chosenLayer = layer.gameObject;
                 }
             }

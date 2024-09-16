@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f0ef0c255eee4d0db52f163b96bb58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arRaycastManager: {fileID: 0}
+  arManager: {fileID: 0}
   arCamera: {fileID: 1094929419}
   conjureKitManager: {fileID: 757491288}
   panelController: {fileID: 362894177}
@@ -740,7 +740,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlanePrefab: {fileID: 6538573834614541410, guid: a86611f81df1843c28f7ab6b2be6f70a,
     type: 3}
-  m_DetectionMode: -1
+  m_DetectionMode: 1
 --- !u!1 &741140212
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1238,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094929413}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1094929419
 Camera:
   m_ObjectHideFlags: 0
@@ -2613,7 +2613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 874b5812208e040a99f2c85928d0f9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allFurnitures:
+  allPrefabs:
   - {fileID: 67406183}
   - {fileID: 1271130640}
   - {fileID: 741140217}
