@@ -3,6 +3,7 @@
     "com.aukilabs.unity.conjurekit": "0.6.69",
     "com.aukilabs.unity.integration.arfoundation": "0.6.35",
     "com.aukilabs.unity.manna": "0.6.89",
+    "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.unity.cloud.gltfast": "6.8.0",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.feature.ar": "1.0.1",
