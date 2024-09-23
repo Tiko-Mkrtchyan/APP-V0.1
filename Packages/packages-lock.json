@@ -37,8 +37,14 @@
       "dependencies": {},
       "hash": "9057452c86079e4265228480b1439442894d5078"
     },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 2,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.burst": {
-      "version": "1.8.12",
+      "version": "1.8.13",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -97,9 +103,9 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {
-        "com.unity.xr.arfoundation": "5.1.2",
-        "com.unity.xr.arkit": "5.1.2",
-        "com.unity.xr.arcore": "5.1.2",
+        "com.unity.xr.arfoundation": "5.1.3",
+        "com.unity.xr.arkit": "5.1.3",
+        "com.unity.xr.arcore": "5.1.3",
         "com.unity.xr.magicleap": "7.0.0",
         "com.unity.xr.openxr": "1.10.0"
       }
@@ -248,6 +254,25 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "com.unity.vectorgraphics": {
+      "version": "2.0.0-preview.21",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.2d.sprite": "1.0.0",
+        "com.unity.modules.ui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.physics2d": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.unitywebrequestwww": "1.0.0",
+        "com.unity.modules.unitywebrequesttexture": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.visualscripting": {
       "version": "1.9.2",
       "depth": 0,
@@ -267,13 +292,13 @@
       }
     },
     "com.unity.xr.arcore": {
-      "version": "5.1.2",
+      "version": "5.1.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.xr.core-utils": "2.1.0",
         "com.unity.xr.management": "4.0.1",
-        "com.unity.xr.arfoundation": "5.1.2",
+        "com.unity.xr.arfoundation": "5.1.3",
         "com.unity.modules.androidjni": "1.0.0",
         "com.unity.modules.unitywebrequest": "1.0.0"
       },
@@ -411,6 +436,15 @@
         "com.unity.xr.legacyinputhelpers": "2.1.2"
       },
       "url": "https://packages.unity.com"
+    },
+    "unity-tailwindcss": {
+      "version": "https://github.com/BennyKok/unity-tailwindcss.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.vectorgraphics": "2.0.0-preview.21"
+      },
+      "hash": "302da48fbbd61b8f2010c03d256257f0d3be5b92"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
