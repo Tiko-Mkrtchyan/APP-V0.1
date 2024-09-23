@@ -138,6 +138,17 @@ public static class Extensions
         UnityEngine.Debug.LogErrorFormat(format, obj);
     }
 
+        /// <summary>
+    /// Debug.LogError wrapper with required scripting defined symbols "LOG_ENABLED"
+    /// </summary>
+    /// <param name="format">Log message</param>
+    /// <param name="obj">obj params</param>
+    [Conditional("LOG_ENABLED")]
+    public static void LogError(string format)
+    {
+        UnityEngine.Debug.LogError(format);
+    }
+
     /// <summary>
     /// Debug.LogError wrapper with required scripting defined symbols "LOG_ENABLED"
     /// </summary>
