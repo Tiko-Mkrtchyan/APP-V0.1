@@ -12,10 +12,10 @@ namespace McKenna.Communications
 
         public bool Success => _success;
         
-        public override IEnumerator Setup(Main main)
+        public override IEnumerator Setup(ApplicationController appController)
         {
             yield return CheckConnection();
-            yield return base.Setup(main);
+            yield return base.Setup(appController);
         }
 
         private IEnumerator CheckConnection()
