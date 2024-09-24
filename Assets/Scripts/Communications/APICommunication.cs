@@ -111,12 +111,13 @@ namespace McKenna.Communications
 
                     return requestResult;
                 }
-                catch
+                catch (Exception e)
                 {
                     OnUploadProgress?.Invoke(UploadStatus.Cancelled, 1f);
                     requestResult.status = request.result;
                     requestResult.content = request.downloadHandler.text;
-
+                    Extensions.LogError(
+                        $"Request received code: {request.responseCode} error: {e.Message}");
                     return requestResult;
                 }
                 finally

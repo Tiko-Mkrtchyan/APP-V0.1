@@ -30,8 +30,13 @@ public class GlbEntryButton : MonoBehaviour
             ThumbnailAdded(key, path);
         }
 
-        var description = $"{_glbModel.Name}\n<size=\"22\">Category:{_glbModel.Category}</size>";
+        var description = $"{_glbModel.Name}\n<size=\"28\">Category:{_glbModel.Category}</size>";
         this.description.SetText(description);
+    }
+
+    private void OnDestroy()
+    {
+        modelServer.CachedImages.OnModelAdd -= ThumbnailAdded;
     }
 
     private async void ThumbnailAdded((string, ImageSize) key, string path)
@@ -40,7 +45,7 @@ public class GlbEntryButton : MonoBehaviour
         if (!key.Equals(localKey)) return;
 
         var tex = await LoadTextureAsync(path);
-        thumbView.texture = tex;
+        if (thumbView != null) thumbView.texture = tex;
     }
 
     private async UniTask<Texture2D> LoadTextureAsync(string path)

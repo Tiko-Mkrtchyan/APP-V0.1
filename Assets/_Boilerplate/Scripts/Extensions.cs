@@ -92,6 +92,12 @@ public static class Extensions
         UnityEngine.Debug.LogFormat(format, obj);
     }
 
+    [Conditional("LOG_ENABLED")]
+    public static void Log(string format)
+    {
+        UnityEngine.Debug.Log(format);
+    }
+
     /// <summary>
     /// Debug.Log wrapper with required scripting defined symbols "LOG_ENABLED"
     /// </summary>
@@ -113,6 +119,12 @@ public static class Extensions
     public static void LogWarning(string format, params object[] obj)
     {
         UnityEngine.Debug.LogWarningFormat(format, obj);
+    }
+
+    [Conditional("LOG_ENABLED")]
+    public static void LogWarning(string format)
+    {
+        UnityEngine.Debug.LogWarning(format);
     }
 
     /// <summary>

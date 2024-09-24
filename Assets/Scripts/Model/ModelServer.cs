@@ -10,7 +10,8 @@ namespace Models
     {
         private Observable<UserLoginResponse> _userCredential = new();
         private ObservableDict<(string, ImageSize), string> _cachedImages = new();
-
+        private Observable<List<string>> _glbCategories = new();
+        private Observable<ResponsesList<GlbResponse>> _glbLibrary = new();
         // private Observable<ThumbnailListRecord> _Thumbnails = new();
         // private Observable<MediaListResponse> _mediaLibrary = new();
         // private Observable<LayerRecord> _currentLayer = new();
@@ -30,6 +31,8 @@ namespace Models
 
         public Observable<UserLoginResponse> UserCredential => _userCredential;
         public ObservableDict<(string, ImageSize), string> CachedImages => _cachedImages;
+        public Observable<List<string>> GlbCategories => _glbCategories;
+        public Observable<ResponsesList<GlbResponse>> GlbLibrary => _glbLibrary;
 
         // public Observable<MediaListResponse> MediaLibrary => _mediaLibrary;
         // // public Observable<ThumbnailListRecord> Thumbnails => _Thumbnails;
@@ -52,6 +55,8 @@ namespace Models
         {
             _userCredential = new();
             _cachedImages = new();
+            _glbCategories = new();
+            _glbLibrary = new();
             // _mediaLibrary = new();
             // _currentLayer = new();
             // _layerList = new();

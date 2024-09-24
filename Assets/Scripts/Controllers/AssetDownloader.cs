@@ -38,6 +38,8 @@ public class AssetDownloader : IAssetDownloader
         if (fileName.CheckIfFileExist(out var path, imageSize))
         {
             Extensions.Log($"[Downloader]:File exist {path}");
+            var key = (url, imageSize);
+            _modelServer.CachedImages.AddMember(key, path);
             return UniTask.FromResult(path);
         }
 
@@ -80,6 +82,7 @@ public class AssetDownloader : IAssetDownloader
         if (fileName.CheckIfFileExist(out var path, imageSize))
         {
             Extensions.Log($"[Downloader]:File exist {path}");
+            _modelServer.CachedImages.AddMember(key, path);
             return path;
         }
 

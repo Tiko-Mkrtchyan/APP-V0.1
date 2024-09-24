@@ -31,6 +31,14 @@ public class ImageAssetRequest
         public string Path;
 }
 
+public class GlbUploadRequest
+{
+        public string Name;
+        public string Category;
+        public string File;
+        public byte[] Thumb;
+}
+
 public class UserLoginRequest
 {
         [JsonProperty("identity")]
