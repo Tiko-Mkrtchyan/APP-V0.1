@@ -120,6 +120,179 @@
     "options": {}
   },
   {
+    "id": "ibw2euhe8j8n5pl",
+    "name": "glbs",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "system": false,
+        "id": "pd93lsc0",
+        "name": "name",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "4ofgwoq7",
+        "name": "file",
+        "type": "file",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "mimeTypes": [
+            "model/gltf-binary"
+          ],
+          "thumbs": [],
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "protected": false
+        }
+      },
+      {
+        "system": false,
+        "id": "b8hlacbf",
+        "name": "thumb",
+        "type": "file",
+        "required": true,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "mimeTypes": [
+            "image/jpeg",
+            "image/png"
+          ],
+          "thumbs": [],
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "protected": false
+        }
+      },
+      {
+        "system": false,
+        "id": "d5dum34e",
+        "name": "category",
+        "type": "select",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSelect": 1,
+          "values": [
+            "Chair",
+            "Table",
+            "Cabinet"
+          ]
+        }
+      }
+    ],
+    "indexes": [
+      "CREATE UNIQUE INDEX `idx_02vEWKW` ON `glbs` (`name`)"
+    ],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": null,
+    "updateRule": null,
+    "deleteRule": null,
+    "options": {}
+  },
+  {
+    "id": "son2x41dnxxtul7",
+    "name": "image_assets",
+    "type": "base",
+    "system": false,
+    "schema": [
+      {
+        "system": false,
+        "id": "wfgemqyk",
+        "name": "name",
+        "type": "text",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "min": null,
+          "max": null,
+          "pattern": ""
+        }
+      },
+      {
+        "system": false,
+        "id": "sgbarwaz",
+        "name": "layer",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "yda1cqnginm9kcz",
+          "cascadeDelete": true,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
+      {
+        "system": false,
+        "id": "w1bpsvln",
+        "name": "image",
+        "type": "file",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "mimeTypes": [
+            "image/jpeg",
+            "image/png"
+          ],
+          "thumbs": [],
+          "maxSelect": 1,
+          "maxSize": 5242880,
+          "protected": false
+        }
+      },
+      {
+        "system": false,
+        "id": "obdrffxf",
+        "name": "pose",
+        "type": "json",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSize": 2000000
+        }
+      },
+      {
+        "system": false,
+        "id": "mfohtama",
+        "name": "data",
+        "type": "json",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "maxSize": 2000000
+        }
+      }
+    ],
+    "indexes": [],
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "@request.auth.id != \"\"",
+    "updateRule": "@request.auth.id = layer.domain.owner.id",
+    "deleteRule": "@request.auth.id = layer.domain.owner.id",
+    "options": {}
+  },
+  {
     "id": "yda1cqnginm9kcz",
     "name": "layers",
     "type": "base",
@@ -149,30 +322,32 @@
         "unique": false,
         "options": {
           "collectionId": "cnkxqj1mfnfvw8u",
-          "cascadeDelete": false,
+          "cascadeDelete": true,
           "minSelect": null,
           "maxSelect": 1,
           "displayFields": null
         }
       }
     ],
-    "indexes": [],
+    "indexes": [
+      "CREATE UNIQUE INDEX `idx_HRj49VY` ON `layers` (\n  `name`,\n  `domain`\n)"
+    ],
     "listRule": "",
     "viewRule": "",
-    "createRule": "",
-    "updateRule": "",
-    "deleteRule": "",
+    "createRule": "@request.auth.id != \"\"",
+    "updateRule": "@request.auth.id = domain.owner.id",
+    "deleteRule": "@request.auth.id = domain.owner.id",
     "options": {}
   },
   {
-    "id": "ntrel27h2uqjput",
-    "name": "media",
+    "id": "l95vmff2t7fr79e",
+    "name": "virtual_assets",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "howxurdj",
+        "id": "5xv8ugfi",
         "name": "name",
         "type": "text",
         "required": false,
@@ -186,71 +361,36 @@
       },
       {
         "system": false,
-        "id": "cvuxisxs",
-        "name": "type",
-        "type": "select",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "maxSelect": 1,
-          "values": [
-            "Image",
-            "Glb"
-          ]
-        }
-      },
-      {
-        "system": false,
-        "id": "noipzggw",
-        "name": "file",
-        "type": "file",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "mimeTypes": [
-            "image/jpeg",
-            "model/gltf-binary",
-            "image/png"
-          ],
-          "thumbs": [],
-          "maxSelect": 1,
-          "maxSize": 5242880,
-          "protected": false
-        }
-      },
-      {
-        "system": false,
-        "id": "qnmips4k",
-        "name": "owner",
+        "id": "teugrwmf",
+        "name": "layer",
         "type": "relation",
         "required": false,
         "presentable": false,
         "unique": false,
         "options": {
-          "collectionId": "_pb_users_auth_",
-          "cascadeDelete": false,
+          "collectionId": "yda1cqnginm9kcz",
+          "cascadeDelete": true,
           "minSelect": null,
           "maxSelect": 1,
           "displayFields": null
         }
-      }
-    ],
-    "indexes": [],
-    "listRule": null,
-    "viewRule": null,
-    "createRule": null,
-    "updateRule": null,
-    "deleteRule": null,
-    "options": {}
-  },
-  {
-    "id": "l95vmff2t7fr79e",
-    "name": "virtual_assets",
-    "type": "base",
-    "system": false,
-    "schema": [
+      },
+      {
+        "system": false,
+        "id": "lx2tt0y0",
+        "name": "glb",
+        "type": "relation",
+        "required": false,
+        "presentable": false,
+        "unique": false,
+        "options": {
+          "collectionId": "ibw2euhe8j8n5pl",
+          "cascadeDelete": true,
+          "minSelect": null,
+          "maxSelect": 1,
+          "displayFields": null
+        }
+      },
       {
         "system": false,
         "id": "kz4ilarv",
@@ -274,44 +414,14 @@
         "options": {
           "maxSize": 2000000
         }
-      },
-      {
-        "system": false,
-        "id": "teugrwmf",
-        "name": "layer",
-        "type": "relation",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "collectionId": "yda1cqnginm9kcz",
-          "cascadeDelete": false,
-          "minSelect": null,
-          "maxSelect": 1,
-          "displayFields": null
-        }
-      },
-      {
-        "system": false,
-        "id": "5xv8ugfi",
-        "name": "name",
-        "type": "text",
-        "required": false,
-        "presentable": false,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
-        }
       }
     ],
     "indexes": [],
     "listRule": "",
     "viewRule": "",
-    "createRule": "",
-    "updateRule": "",
-    "deleteRule": "",
+    "createRule": "@request.auth.id != \"\"",
+    "updateRule": "@request.auth.id = layer.domain.owner.id",
+    "deleteRule": "@request.auth.id = layer.domain.owner.id",
     "options": {}
   }
 ]

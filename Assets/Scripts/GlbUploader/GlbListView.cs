@@ -237,6 +237,15 @@ namespace GlbUploader
                         toastModalView.ShowToast(toast);
                         RefreshGlbs();
                     }
+                    else
+                    {
+                        var toast = new ToastOptions()
+                        {
+                            Message = $"Failed to delete {model.Name}",
+                            Duration = 2f
+                        };
+                        toastModalView.ShowToast(toast);
+                    }
                 }
             };
             toastModalView.ShowDialog(option);

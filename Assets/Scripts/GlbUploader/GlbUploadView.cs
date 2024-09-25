@@ -133,6 +133,12 @@ namespace GlbUploader
 
             if (glbResponse != null)
             {
+                var toast = new ToastOptions()
+                {
+                    Message = $"Successfully added {glbResponse.Name}",
+                    Duration = 2f
+                };
+                toastModalView.ShowToast(toast);
                 var glbList = modelServer.GlbLibrary.GetModel();
                 glbList.Items.Add(glbResponse);
                 modelServer.GlbLibrary.SetModel(glbList);
@@ -178,20 +184,6 @@ namespace GlbUploader
             }
 
             byte[] jpgBytes = glbThumb.EncodeToJPG();
-            // get file name from url
-            // string fileName = Path.GetFileName(glbUrl);
-            // //change the extension with new png only string
-            // fileName = fileName.Replace(".glb", ".png");
-
-            // if (!Directory.Exists(Values.ThumbFolder))
-            //     Directory.CreateDirectory(Values.ThumbFolder);
-
-            // // Define the file path
-            // string filePath = Path.Combine(Values.ThumbFolder, fileName);
-            // // Save the PNG bytes to a local file
-            // await File.WriteAllBytesAsync(filePath, pngBytes);
-            // // wait a second to make sure the file is saved
-            // await UniTask.Delay(1000);
             return jpgBytes;
         }
     }
