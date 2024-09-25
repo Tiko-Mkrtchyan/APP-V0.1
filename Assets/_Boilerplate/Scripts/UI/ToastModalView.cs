@@ -1,4 +1,6 @@
 using BoilerplateRomi.Models;
+using Cysharp.Threading.Tasks;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -26,6 +28,13 @@ namespace BoilerplateRomi.Views
         {
             toastSequencer.Initialize();
             modalSequencer?.Initialize();
+
+            modalSequencer.onDisplayStart += RefreshDialogPanelSize;
+        }
+
+        private void OnDestroy() 
+        {
+            modalSequencer.onDisplayStart -= RefreshDialogPanelSize;
         }
 
         public void ShowToast(ToastOptions options)
@@ -79,10 +88,22 @@ namespace BoilerplateRomi.Views
             noText.SetText(options.NoText);
             noText.color = options.NoColor;
         }
+
         public void HideDialog()
         {
             Extensions.Log("hide dialog");
             modalSequencer.PlaySequence(true);
+        }
+
+        //needed to make sure modal dialog window size refreshed when message is changed
+        private async void RefreshDialogPanelSize()
+        {
+            await UniTask.NextFrame();
+            modalText.gameObject.SetActive(false);
+            modalText.gameObject.SetActive(true);
+            await UniTask.NextFrame();
+            modalSequencer.gameObject.SetActive(false);
+            modalSequencer.gameObject.SetActive(true);
         }
     }
 }

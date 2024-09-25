@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "APP-V0.1.sln"
+    "dotnet.defaultSolution": "App-v0.1-UnityProj.sln"
 }

@@ -26,9 +26,11 @@ namespace GlbUploader
         {
             if (request == null) return null;
 
-            var form = new List<IMultipartFormSection>();
-            form.Add(new MultipartFormDataSection("name", request.Name));
-            form.Add(new MultipartFormDataSection("category", request.Category));
+            var form = new List<IMultipartFormSection>
+            {
+                new MultipartFormDataSection("name", request.Name),
+                new MultipartFormDataSection("category", request.Category)
+            };
             if (!string.IsNullOrEmpty(request.File))
             {
                 var (bytes, fileName) = await GetDataByte(request.File);
@@ -53,6 +55,14 @@ namespace GlbUploader
             }
 
             return null;
+        }
+
+        public async UniTask<bool> DeleteGlb(string glbId, string authToken)
+        {
+            var endPoint = $"{EndPoint}/{glbId}";
+            var result = await _serverCommunication.Send(endPoint, RestMethod.Delete, string.Empty, authToken);
+
+            return result.status == UnityWebRequest.Result.Success;
         }
 
         private async UniTask<(byte[], string)> GetDataByte(string path)

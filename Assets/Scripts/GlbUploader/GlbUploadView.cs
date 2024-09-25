@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using BoilerplateRomi.Models;
+using BoilerplateRomi.Views;
 using Cysharp.Threading.Tasks;
 using Models;
 using UnityEngine;
@@ -16,6 +18,9 @@ namespace GlbUploader
         [SerializeField] private TMPro.TMP_Text selectedGlbPathText;
         [SerializeField] private Button buttonSelectGlb, buttonCancel, buttonSubmit;
 
+        [Space(10)]
+        [SerializeField] private ToastModalView toastModalView;
+
         [Header("Debug")]
         [SerializeField] private RawImage debugThumbnail;
 
@@ -28,7 +33,7 @@ namespace GlbUploader
         {
             _glbUploadController = glbUploadController;
             _glbPreviewLoader = GlbPreviewLoader.Instance;
-            
+
             modelServer.GlbCategories.OnModelUpdate += CategoryUpdate;
 
             nameInput.onEndEdit.AddListener(ValidateName);
@@ -43,11 +48,11 @@ namespace GlbUploader
 
         private void CategoryUpdate(List<string> list)
         {
-                categoryDropdown.ClearOptions();
-                categoryDropdown.AddOptions(list);
-                var newSizeDelta = categoryDropdown.template.sizeDelta;
-                newSizeDelta.y = Mathf.Min(140 * list.Count, 140 * 5);
-                categoryDropdown.template.sizeDelta = newSizeDelta;
+            categoryDropdown.ClearOptions();
+            categoryDropdown.AddOptions(list);
+            var newSizeDelta = categoryDropdown.template.sizeDelta;
+            newSizeDelta.y = Mathf.Min(140 * list.Count, 140 * 5);
+            categoryDropdown.template.sizeDelta = newSizeDelta;
         }
 
         private void ValidateName(string newName)
@@ -90,7 +95,7 @@ namespace GlbUploader
         private void ValidateSubmitButton()
         {
             var checkForFile = !string.IsNullOrEmpty(_request.File) || !_isUpdating;
-            buttonSubmit.interactable = !string.IsNullOrEmpty(_request.Name) && 
+            buttonSubmit.interactable = !string.IsNullOrEmpty(_request.Name) &&
                                         !string.IsNullOrEmpty(_request.Category) &&
                                         checkForFile;
         }
@@ -98,7 +103,8 @@ namespace GlbUploader
         private void SelectGlb()
         {
             var glbExtension = NativeFilePicker.ConvertExtensionToFileType("glb");
-            NativeFilePicker.PickFile(file =>{
+            NativeFilePicker.PickFile(file =>
+            {
                 if (!file.Contains(".glb"))
                 {
                     Extensions.Log("Not a GLB file");
@@ -117,12 +123,12 @@ namespace GlbUploader
             {
                 _request.Thumb = thumbBytes;
                 if (debugThumbnail != null)
-                { 
-                    var tex = new Texture2D(2,2);
+                {
+                    var tex = new Texture2D(2, 2);
                     ImageConversion.LoadImage(tex, thumbBytes);
                     debugThumbnail.texture = tex;
                 }
-            } 
+            }
             var glbResponse = await _glbUploadController.UploadGlb(_request, authToken);
 
             if (glbResponse != null)
@@ -136,9 +142,30 @@ namespace GlbUploader
 
         private void Cancel()
         {
-            _request = new();
-            selectedGlbPathText.SetText(string.Empty);
-            gameObject.SetActive(false);
+            if (IsRequestFilled())
+            {
+                var option = new ModalOptions()
+                {
+                    Message = "Do you really want to cancel this?\nUnsaved changes will be lost",
+                    YesAction = DoCancel
+                };
+                toastModalView.ShowDialog(option);
+                return;
+            }
+
+            DoCancel();
+
+            void DoCancel()
+            {
+                _request = new();
+                selectedGlbPathText.SetText(string.Empty);
+                gameObject.SetActive(false);
+            }
+        }
+
+        private bool IsRequestFilled()
+        {
+            return !string.IsNullOrEmpty(_request.Name) || !string.IsNullOrEmpty(_request.File);
         }
 
         private async UniTask<byte[]> AddGlbThumbnail(string glbUrl)

@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BoilerplateRomi.Models;
+using BoilerplateRomi.Views;
 using Cysharp.Threading.Tasks;
 using McKenna.Communications;
 using Models;
@@ -19,6 +21,9 @@ namespace GlbUploader
         [SerializeField] private RectTransform scrollContainer;
         [SerializeField] private GlbEntryButton glbButtonPrefab;
         [SerializeField] private GlbUploadView glbUploadView;
+        
+        [Space(10)]
+        [SerializeField] private ToastModalView toastModalView;
 
         private IServerCommunication _serverCommunication;
         private IAssetDownloader _assetDownloader;
@@ -45,6 +50,11 @@ namespace GlbUploader
             modelServer.UserCredential.SetModel(userLoginResponse);
             await SetupCategories(userLoginResponse.Token);
 
+            RefreshGlbs();
+        }
+
+        private async void RefreshGlbs()
+        {
             _glbList = await GetAllGlbs();
 
             if (_glbList != null && _glbList.Items.Count > 0)
@@ -183,7 +193,7 @@ namespace GlbUploader
             {
                 if (!item.Category.Equals(categoryDropDown.captionText.text, StringComparison.CurrentCultureIgnoreCase)) continue;
                 var tempButton = Instantiate(glbButtonPrefab, scrollContainer);
-                tempButton.Setup(item);
+                tempButton.Setup(item, UpdateGlb, DeleteGlb);
             }
         }
 
@@ -201,6 +211,35 @@ namespace GlbUploader
                     Extensions.Log($"Cache, Key: {item.Key}, path: {item.Value}");
                 }
             }
+        }
+
+        private void UpdateGlb(GlbResponse model)
+        {
+            glbUploadView.OpenUpdate(model);
+        }
+
+        private void DeleteGlb(GlbResponse model)
+        {
+            var authToken = modelServer.UserCredential.GetModel()?.Token;
+            var option = new ModalOptions()
+            {
+                Message =$"Do you really want to delete {model.Name}?",
+                YesAction = async ()=>{
+                    var success = await _glbUploadController.DeleteGlb(model.Id, authToken);
+
+                    if (success)
+                    {
+                        var toast = new ToastOptions()
+                        {
+                            Message = $"Successfully deleted {model.Name}",
+                            Duration = 2f
+                        };
+                        toastModalView.ShowToast(toast);
+                        RefreshGlbs();
+                    }
+                }
+            };
+            toastModalView.ShowDialog(option);
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using GlbUploader;
 using Models;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -15,14 +16,21 @@ public class GlbEntryButton : MonoBehaviour
     [SerializeField] private Button editButton, deleteButton;
 
     private GlbResponse _glbModel;
+    private Action<GlbResponse> _uploadCallback;
+    private Action<GlbResponse> _deleteCallback;
 
-    public void Setup(GlbResponse glbModel)
+    public void Setup(GlbResponse glbModel, Action<GlbResponse> uploadCallback, Action<GlbResponse> deleteCallback)
     {
         _glbModel = glbModel;
+        _uploadCallback = uploadCallback;
+        _deleteCallback = deleteCallback;
 
         var glbUrl = _glbModel.GetGlbThumbnailUrl();
 
         modelServer.CachedImages.OnModelAdd += ThumbnailAdded;
+
+        editButton.onClick.AddListener(()=> _uploadCallback?.Invoke(_glbModel));
+        deleteButton.onClick.AddListener(()=> _deleteCallback?.Invoke(_glbModel));
 
         var key = (glbUrl, ImageSize.Original);
         if (modelServer.CachedImages.TryGetValue(key, out var path))
